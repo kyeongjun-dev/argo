@@ -5,11 +5,9 @@ metadata:
 spec:
   selector:
     app: node
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 3000
-    targetPort: 3000
-    protocol: TCP
 ---
 apiVersion: v1
 kind: Service
