@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node
+spec:
+  selector:
+    app: node
+  type: LoadBalancer
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django
+spec:
+  selector:
+    app: django
+  type: ClusterIP
+  ports:
+  - port: 8000

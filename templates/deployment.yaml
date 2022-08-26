@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-v1
+spec:
+  selector:
+    matchLabels:
+      app: node
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node
+        version: v1
+    spec:
+      containers:
+      - name: node
+        image: rudwns273/node:echo-hostname
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: VERSION
+          value: "v1"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-v2
+spec:
+  selector:
+    matchLabels:
+      app: node
+      version: v2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node
+        version: v2
+    spec:
+      containers:
+      - name: node
+        image: rudwns273/node:echo-hostname
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: VERSION
+          value: "v2"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-v1
+spec:
+  selector:
+    matchLabels:
+      app: django
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: django
+        version: v1
+    spec:
+      containers:
+      - name: django
+        image: rudwns273/django:echo-hostname
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+        - name: VERSION
+          value: "v1"
+        - name: DJANGO_SECRET_KEY
+          value: "$e%o5k)s(0mm^-tb6@ily-8)d^ma(+v^8@fr6#uq7eig+vqv-5"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-v2
+spec:
+  selector:
+    matchLabels:
+      app: django
+      version: v2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: django
+        version: v2
+    spec:
+      containers:
+      - name: django
+        image: rudwns273/django:echo-hostname
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+        - name: VERSION
+          value: "v2"
+        - name: DJANGO_SECRET_KEY
+          value: "$e%o5k)s(0mm^-tb6@ily-8)d^ma(+v^8@fr6#uq7eig+vqv-5"
