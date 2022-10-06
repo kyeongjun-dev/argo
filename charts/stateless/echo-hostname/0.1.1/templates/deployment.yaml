@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-v1
+  namespace: myapp
+spec:
+  selector:
+    matchLabels:
+      app: node
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node
+        version: v1
+    spec:
+      containers:
+      - name: node
+        image: rudwns273/node:echo-hostname
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: VERSION
+          value: {{ .Values.node_version }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-v2
+  namespace: myapp
+spec:
+  selector:
+    matchLabels:
+      app: node
+      version: v2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node
+        version: v2
+    spec:
+      containers:
+      - name: node
+        image: rudwns273/node:echo-hostname
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: VERSION
+          value: {{ .Values.node_version }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-v1
+  namespace: myapp
+spec:
+  selector:
+    matchLabels:
+      app: django
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: django
+        version: v1
+    spec:
+      containers:
+      - name: django
+        image: rudwns273/django:echo-hostname
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+        - name: VERSION
+          value: {{ .Values.django_version }}
+        - name: DJANGO_SECRET_KEY
+          value: {{ .Values.django_secret_key }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-v2
+  namespace: myapp
+spec:
+  selector:
+    matchLabels:
+      app: django
+      version: v2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: django
+        version: v2
+    spec:
+      containers:
+      - name: django
+        image: rudwns273/django:echo-hostname
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+        - name: VERSION
+          value: {{ .Values.django_version }}
+        - name: DJANGO_SECRET_KEY
+          value: {{ .Values.django_secret_key }}

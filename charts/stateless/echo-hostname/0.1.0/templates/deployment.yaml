@@ -23,7 +23,7 @@ spec:
         - containerPort: 3000
         env:
         - name: VERSION
-          value: "v1"
+          value: {{ .Values.node_version }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -50,7 +50,7 @@ spec:
         - containerPort: 3000
         env:
         - name: VERSION
-          value: "v2"
+          value: {{ .Values.node_version }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -77,7 +77,7 @@ spec:
         - containerPort: 8000
         env:
         - name: VERSION
-          value: "v1"
+          value: {{ .Values.django_version }}
         - name: DJANGO_SECRET_KEY
           value: {{ .Values.django_secret_key }}
 ---
