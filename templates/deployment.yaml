@@ -79,7 +79,7 @@ spec:
         - name: VERSION
           value: "v1"
         - name: DJANGO_SECRET_KEY
-          value: {{ .Values.django_secret_key}}
+          value: {{ quote .Values.django_secret_key}}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -108,4 +108,4 @@ spec:
         - name: VERSION
           value: {{ .Values.django_version }}
         - name: DJANGO_SECRET_KEY
-          value: {{ .Values.django_secret_key}}
+          value: {{ quote .Values.django_secret_key}}
