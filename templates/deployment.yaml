@@ -108,4 +108,4 @@ spec:
         - name: VERSION
           value: {{ .Values.django_version }}
         - name: DJANGO_SECRET_KEY
-          value: "$e%o5k)s(0mm^-tb6@ily-8)d^ma(+v^8@fr6#uq7eig+vqv-5"
+          value: {{ .Values.django_secret_key }}
