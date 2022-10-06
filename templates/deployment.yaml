@@ -79,7 +79,7 @@ spec:
         - name: VERSION
           value: "v1"
         - name: DJANGO_SECRET_KEY
-          value: "$e%o5k)s(0mm^-tb6@ily-8)d^ma(+v^8@fr6#uq7eig+vqv-5"
+          value: {{ .Values.django_secret_key }}
 ---
 apiVersion: apps/v1
 kind: Deployment
