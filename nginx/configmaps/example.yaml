@@ -4,7 +4,7 @@ metadata:
   name: example
   namespace: nginx
 data:
-  default.conf: |
+  example.conf: |
     server {
         listen       80;
         server_name  example.com;
