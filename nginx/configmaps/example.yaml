@@ -11,7 +11,7 @@ data:
 
         location / {
             root   /usr/share/nginx/html;
-            index  index.html index.htm;
+            index  50x.html 50x.htm;
         }
 
         error_page   500 502 503 504  /50x.html;
