@@ -26,7 +26,7 @@ spec:
           # subPath: default.conf
         securityContext:
           sysctls:
-          - name: net.ipv4.tcp_keepalive_time
+          - name: "net.ipv4.tcp_keepalive_time"
             value: "300"
       volumes:
       - name: nginx-config-volume
